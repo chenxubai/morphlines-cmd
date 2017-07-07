@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>chenxu.morphlines.command</groupId>
+  <artifactId>morphline-cmd</artifactId>
+  <version>0.1</version>
+  
+  
+  <properties>
+    <!-- Keep this updated to the latest Kite release! -->
+    <kite-version>1.1.0</kite-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>cdh.repo</id>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+      <name>Cloudera Repositories</name>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.kitesdk</groupId>
+      <artifactId>kite-morphlines-core</artifactId>
+      <version>${kite-version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.kitesdk</groupId>
+      <artifactId>kite-morphlines-core</artifactId>
+      <type>test-jar</type>
+      <scope>test</scope>
+      <version>${kite-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+      <version>4.10</version>      
+    </dependency>
+
+    <dependency> 
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <scope>test</scope>
+      <version>1.7.5</version>      
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+        <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.0</version>
+			<configuration>
+			<source>1.7</source>
+			<target>1.7</target>
+			</configuration>
+		</plugin> 
+      
+      <!-- Optionally, generate list of all needed jar files -->
+      <!--      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
+              <includeScope>runtime</includeScope>
+              <excludeScope>provided</excludeScope>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      -->
+      
+      <!-- Also consider running 'mvn dependency:tree' to print which jar depends on which other jar -->
+      
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-eclipse-plugin</artifactId>
+          <version>2.9</version>
+          <configuration>
+            <downloadSources>true</downloadSources>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+</build>
+</project>
